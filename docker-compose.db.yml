@@ -1,6 +1,9 @@
 services:
   bootlegbricks-db:
-    image: postgres:18-alpine
+    image: bootlegbricks-postgres:18-init
+    build:
+      context: .
+      dockerfile: Dockerfile.pg
     container_name: bootlegbricks-db
     restart: unless-stopped
     environment:
@@ -9,7 +12,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       TZ: Europe/Moscow
     volumes:
-      - ./sql/init:/docker-entrypoint-initdb.d:ro
       - bootlegbricks_pgdata:/var/lib/postgresql/data
     ports:
       - "5445:5432"
@@ -21,3 +23,4 @@ services:
 
 volumes:
   bootlegbricks_pgdata:
+    name: bootlegbricks_pgdata

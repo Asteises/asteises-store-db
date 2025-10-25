@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS citext;
+
 -- Пользователи админки
 CREATE TABLE IF NOT EXISTS app_user (
                                         id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
