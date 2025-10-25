@@ -20,7 +20,13 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    networks:
+      - bootlegbricks-network
 
 volumes:
   bootlegbricks_pgdata:
     name: bootlegbricks_pgdata
+
+networks:
+  bootlegbricks-network:
+    external: true
